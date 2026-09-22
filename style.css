@@ -375,7 +375,10 @@ a{
 
 .content{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  /* Projects กว้างกว่า Skills */
+  grid-template-columns:1.35fr 1fr;
+
   gap:18px
 }
 
@@ -569,20 +572,30 @@ a{
 
 .projects{
   display:grid;
+
+  /* Project 01 / 02 / 03 อยู่ 3 ช่อง */
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px
+
+  /* เพิ่มระยะห่าง */
+  gap:20px
 }
 
 .project{
   border:1px solid #eee7ef;
   border-radius:12px;
   overflow:hidden;
-  padding-bottom:12px;
-  min-width:0
+
+  /* เพิ่มพื้นที่ด้านล่าง */
+  padding-bottom:14px;
+
+  min-width:0;
+  background:#fff
 }
 
 .project-art{
-  height:105px;
+  /* เพิ่มความสูงของส่วนรูป */
+  height:115px;
+
   display:grid;
   place-items:center;
   font-size:38px;
@@ -616,16 +629,24 @@ a{
 }
 
 .project h3{
-  font-size:14px;
-  line-height:1.45;
+  /* เพิ่มขนาดชื่อ Project */
+  font-size:15px;
+
+  /* ให้ภาษาไทยอ่านง่าย */
+  line-height:1.5;
+
   margin-top:2px;
   color:var(--purple)
 }
 
 .project p{
-  font-size:11px;
-  color:var(--muted);
-  line-height:1.55
+  /* เพิ่มขนาดรายละเอียด */
+  font-size:12px;
+
+  /* เพิ่มระยะห่างระหว่างบรรทัด */
+  line-height:1.65;
+
+  color:var(--muted)
 }
 
 .project .tags{
@@ -732,6 +753,7 @@ footer p{
     grid-template-columns:170px 1fr
   }
 
+  /* หน้าจอเล็กให้เรียงเป็น 1 คอลัมน์ */
   .content{
     grid-template-columns:1fr
   }
