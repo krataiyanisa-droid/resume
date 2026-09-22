@@ -291,7 +291,7 @@ a{
   max-width:1160px;
   margin:-28px auto 0;
   display:grid;
-  grid-template-columns:200px 1fr;
+  grid-template-columns:200px minmax(0,1fr);
   gap:18px;
   position:relative;
   z-index:5;
@@ -373,13 +373,19 @@ a{
 
 /* =========================
    CONTENT
+   PROJECTS = 65%
+   SKILLS   = 35%
 ========================= */
 
-/* Projects กว้างกว่า Skills */
 .content{
   display:grid;
-  grid-template-columns:1.7fr 0.9fr;
-  gap:18px
+
+  /* Projects ใหญ่กว่า Skills */
+  grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);
+
+  gap:18px;
+  align-items:start;
+  min-width:0
 }
 
 .card{
@@ -387,7 +393,8 @@ a{
   border:1px solid var(--line);
   border-radius:16px;
   padding:23px;
-  box-shadow:0 10px 30px rgba(75,23,79,.07)
+  box-shadow:0 10px 30px rgba(75,23,79,.07);
+  min-width:0
 }
 
 .card>.section-head{
@@ -409,7 +416,8 @@ a{
   display:grid;
   place-items:center;
   color:var(--purple2);
-  font-weight:700
+  font-weight:700;
+  flex:none
 }
 
 .section-head h2{
@@ -441,12 +449,14 @@ a{
 
 .academic-card{
   grid-column:2;
-  grid-row:1 / span 2
+  grid-row:1 / span 2;
+  min-width:0
 }
 
 .academic-card table{
   font-size:12px;
-  width:100%
+  width:100%;
+  border-collapse:collapse
 }
 
 .academic-card th,
@@ -510,7 +520,9 @@ a{
 
 #skills{
   grid-column:2;
-  grid-row:3
+  grid-row:3;
+  min-width:0;
+  width:100%
 }
 
 .skills-grid{
@@ -567,14 +579,17 @@ a{
 
 #projects{
   grid-column:1;
-  grid-row:3
+  grid-row:3;
+  min-width:0;
+  width:100%
 }
 
-/* Project 01 / 02 / 03 */
 .projects{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px
+  gap:12px;
+  width:100%;
+  min-width:0
 }
 
 .project{
@@ -583,6 +598,7 @@ a{
   overflow:hidden;
   padding-bottom:14px;
   min-width:0;
+  width:100%;
   background:#fff
 }
 
@@ -606,7 +622,6 @@ a{
   background:linear-gradient(135deg,#ccefcf,#d8ddff)
 }
 
-/* ลดขอบด้านในเพื่อเพิ่มพื้นที่ข้อความ */
 .project>*:not(.project-art){
   margin-left:10px;
   margin-right:10px
@@ -626,13 +641,19 @@ a{
   line-height:1.5;
   margin-top:2px;
   color:var(--purple);
+
+  /* ป้องกันข้อความล้น */
+  overflow-wrap:break-word;
   word-break:normal
 }
 
 .project p{
   font-size:12px;
   color:var(--muted);
-  line-height:1.65;
+  line-height:1.6;
+
+  /* ป้องกันข้อความล้น */
+  overflow-wrap:break-word;
   word-break:normal
 }
 
@@ -737,12 +758,16 @@ footer p{
   }
 
   .layout{
-    grid-template-columns:170px 1fr
+    grid-template-columns:170px minmax(0,1fr)
   }
 
-  /* Tablet ให้เรียงเนื้อหาเป็น 1 คอลัมน์ */
+  /*
+    Tablet:
+    เปลี่ยนเป็น 1 คอลัมน์
+  */
   .content{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
+    gap:18px
   }
 
   .academic-card{
@@ -760,8 +785,11 @@ footer p{
     grid-row:auto
   }
 
+  /*
+    Tablet ให้ Project 2 ใบต่อแถว
+  */
   .projects{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:repeat(2,minmax(0,1fr))
   }
 }
 
@@ -864,6 +892,9 @@ footer p{
     text-align:left
   }
 
+  /*
+    Mobile Project 1 ใบต่อแถว
+  */
   .projects{
     grid-template-columns:1fr
   }
